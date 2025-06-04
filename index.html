@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芫荽君的主页 - 视觉与图形学技术分享</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255,255,255,0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255,255,255,0.05) 0%, transparent 20%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }        
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00c9ff, #92fe9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+        
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .intro h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #64ffda;
+            display: flex;
+            align-items: center;
+        }
+        
+        .intro h2 i {
+            margin-right: 10px;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #e6e6e6;
+        }
+        
+        .domains {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .domain-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .domain-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #00c9ff, #92fe9d);
+        }
+        
+        .domain-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .domain-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #64ffda;
+            display: flex;
+            align-items: center;
+        }
+        
+        .domain-card h3 i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .domain-card p {
+            color: #ccc;
+            line-height: 1.6;
+        }
+        
+        .wechat-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .wechat-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #64ffda;
+        }
+        
+        .wechat-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+        }
+        
+        .wechat-text {
+            text-align: left;
+            max-width: 500px;
+        }
+        
+        .wechat-text p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            line-height: 1.6;
+        }
+        
+        .wechat-text .highlight {
+            color: #ff8a00;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            color: #aaa;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: #64ffda;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .intro {
+                padding: 1.5rem;
+            }
+            
+            .wechat-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .wechat-text {
+                text-align: center;
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        /* ===== 头像图片样式 ===== */
+        .avatar {
+            width: 200px; /* 增大容器尺寸 */
+            height: 200px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block; /* 解决图片下方空白问题 */
+        }
+
+        /* ===== 二维码图片样式 ===== */
+        .qrcode {
+            width: 220px; /* 增大容器尺寸 */
+            height: 220px;
+            padding: 10px; /* 减少内边距 */
+        }
+
+        .qrcode img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            display: block; /* 解决图片下方空白问题 */
+            background: white; /* 二维码背景设为白色 */
+            padding: 5px; /* 添加内边距 */
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="avatar floating">
+                <img src="profile.jpg" alt="芫荽君的头像" loading="lazy">
+            </div>
+            <h1>欢迎来到芫荽君的主页</h1>
+            <p class="tagline">视觉与图形学技术探索者 | 分享前沿技术与实践经验</p>
+        </header>
+        
+        <section class="intro">
+            <h2><i class="fas fa-user"></i> 关于我</h2>
+            <p>我是芫荽君，一位专注于计算机视觉与图形学领域的技术爱好者。我创建这个网站的目的是为了记录和分享我在技术学习道路上的心得体会与实践经验。</p>
+            <p>在这里，您将找到我在视觉、图形学及相关领域的项目分享、技术文章和学习笔记。内容涵盖位姿估计、三维重建与渲染、可微分的物理仿真与引擎、神经辐射场等多个前沿方向，同时也包括Games系列课程的学习总结。</p>
+            <p>我希望通过这个平台，能与更多志同道合的朋友交流学习，共同探索计算机视觉与图形学的奇妙世界。</p>
+        </section>
+        
+        <section class="domains">
+            <div class="domain-card">
+                <h3><i class="fas fa-cubes"></i> 位姿估计</h3>
+                <p>探索物体在三维空间中的位置和方向估计技术，包括传统方法和基于深度学习的最新进展。</p>
+            </div>
+            
+            <div class="domain-card">
+                <h3><i class="fas fa-cube"></i> 三维重建</h3>
+                <p>从二维图像到三维模型的转换技术，涵盖多视角几何、点云处理与表面重建方法。</p>
+            </div>
+            
+            <div class="domain-card">
+                <h3><i class="fas fa-paint-brush"></i> 渲染技术</h3>
+                <p>研究真实感渲染与实时渲染技术，包括光线追踪、全局光照和Shader开发实践。</p>
+            </div>
+            
+            <div class="domain-card">
+                <h3><i class="fas fa-atom"></i> 物理仿真</h3>
+                <p>可微分物理引擎与仿真技术，结合机器学习实现更高效的物理模拟与优化。</p>
+            </div>
+            
+            <div class="domain-card">
+                <h3><i class="fas fa-brain"></i> 神经辐射场</h3>
+                <p>NeRF及其变体研究，探索神经网络在三维场景表示与生成中的应用。</p>
+            </div>
+            
+            <div class="domain-card">
+                <h3><i class="fas fa-gamepad"></i> Games系列课程</h3>
+                <p>分享Games系列课程学习笔记与实践项目，包括计算机图形学、物理仿真等内容。</p>
+            </div>
+        </section>
+        
+        <section class="wechat-section">
+            <h2><i class="fab fa-weixin"></i> 关注公众号</h2>
+            <div class="wechat-content">
+                <div class="wechat-text">
+                    <p>欢迎关注我的微信公众号</p>
+                    <p class="highlight">@rendering&vision芫荽君技术小站</p>
+                    <p>获取最新技术文章、项目分享和学习资源</p>
+                    <p>公众号会定期更新视觉与图形学领域的深度解析、实践教程和行业动态</p>
+                </div>
+                <div class="qrcode">
+                    <img src="qrcode.jpg" alt="芫荽君公众号的二维码" loading="lazy">
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>芫荽君的技术小站 &copy; 2025 | 探索视觉与图形学的无限可能</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // 添加简单的动画效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.domain-card');
+            
+            cards.forEach((card, index) => {
+                // 为每个卡片添加延迟动画
+                card.style.animation = `fadeIn 0.5s ease-out ${index * 0.1}s forwards`;
+                card.style.opacity = '0';
+            });
+            
+            // 添加浮动效果
+            const avatar = document.querySelector('.avatar');
+            avatar.addEventListener('mouseover', () => {
+                avatar.classList.add('floating');
+            });
+            
+            // 添加样式表动画
+            const style = document.createElement('style');
+            style.innerHTML = `
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(20px); }
+                    to { opacity: 1; transform: translateY(0); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
