@@ -1,0 +1,88 @@
+/* css/styles.css */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+/* 从主页复制的所有样式 */
+body {
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    /* 其他样式... */
+}
+
+/* 添加博客相关样式 */
+.blog-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* 其他博客样式... */
+/* 博客预览部分 */
+.blog-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 3rem;
+    margin: 4rem 0;
+}
+
+.blog-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.blog-preview-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 15px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.blog-preview-card:hover {
+    transform: translateY(-5px);
+}
+
+.view-all {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(90deg, #00c9ff, #92fe9d);
+    color: #0f0c29;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 201, 255, 0.3);
+}
+
+/* 导航菜单 */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+}
+
+.main-nav a {
+    color: #64ffda;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.main-nav a:hover {
+    background: rgba(100, 255, 218, 0.1);
+}

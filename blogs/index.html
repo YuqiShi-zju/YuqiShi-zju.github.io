@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>芫荽君的博客</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        /* 博客首页特定样式 */
+        .blog-home-header {
+            text-align: center;
+            padding: 4rem 0;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .category-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .category-card h2 {
+            color: #64ffda;
+            font-size: 1.8rem;
+            margin: 1rem 0;
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            color: #00c9ff;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="blog-container">
+            <div class="blog-home-header">
+                <h1>芫荽君的技术博客</h1>
+                <p class="tagline">探索视觉与图形学的前沿技术</p>
+            </div>
+            
+            <div class="category-grid">
+                <a href="categories/pose_estimation/index.html" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <h2>位姿估计</h2>
+                    <p>物体在三维空间中的位置和方向估计技术</p>
+                </a>
+                
+                <a href="categories/3d_reconstruction/index.html" class="category-card">
+                    <div class="category-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h2>三维重建</h2>
+                    <p>从二维图像到三维模型的转换技术</p>
+                </a>
+                
+                <!-- 其他分类卡片... -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
